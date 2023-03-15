@@ -1,0 +1,47 @@
+{
+    "configurations": {
+        "python_i2dl": {
+            "adapter": "debugpy", 
+            "filetypes": [ "python" ],
+            "configuration": {
+                "request": "launch", 
+                "type": "python", 
+                "cwd": "${workspaceRoot}",
+                "program": "${file}",
+                "stopOnEntry": true,
+                "console": "externalTerminal",
+                "python": "~/.conda/envs/cv3/bin/python",
+                "showReturnValue": true, 
+                "justMyCode": false
+            }, 
+            "breakpoints": {
+                "exception": {
+                    "raised": "N", 
+                    "uncaught": "Y"
+                }
+            }
+        }, 
+        "python_no_env": {
+            "adapter": "debugpy", 
+            "filetypes": [ "python" ],
+            "configuration": {
+                "request": "launch", 
+                "type": "python", 
+                "cwd": "${workspaceRoot}",
+                "program": "${file}",
+                "stopOnEntry": true,
+                "console": "externalTerminal",
+                "python": "/usr/bin/python",
+                "showReturnValue": true, 
+                "justMyCode": false
+            }, 
+            "breakpoints": {
+                "exception": {
+                    "raised": "N", 
+                    "uncaught": "Y"
+                }
+            }
+        }
+    }
+}
+
