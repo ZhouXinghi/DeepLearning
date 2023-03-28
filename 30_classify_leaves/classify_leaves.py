@@ -82,8 +82,8 @@ train_dataset, valid_dataset = data.random_split(all_dataset, [n_train, n_valid]
 #  transforms.ToPILImage()(img).show()
 #  print(label)
 
-train_loader = data.DataLoader(train_dataset, batch_size=8, shuffle=True, num_workers=2)
-valid_loader = data.DataLoader(valid_dataset, batch_size=8, shuffle=True, num_workers=2)
+train_loader = data.DataLoader(train_dataset, batch_size=8, shuffle=True, num_workers=4)
+valid_loader = data.DataLoader(valid_dataset, batch_size=8, shuffle=True, num_workers=4)
 #  for i, (X, y) in enumerate(train_loader):
 #      for j in range(X.shape[0]):
 #          transforms.ToPILImage()(X[j]).show()
@@ -167,8 +167,11 @@ def train_model(net, train_loader, valid_loader, loss, num_epochs, optimizer, de
             torch.save(net.state_dict(), model_path)
             print(f'saving model with acc {best_acc:.5f}')
             
-#  train_model(net, train_loader, valid_loader, loss, num_epochs, optimizer, device=torch.device('cuda:0'))
-net.load_state_dict(torch.load('30_classify_leaves/models/pre_res_model_0.85866.ckpt'))
-loss, acc = evaluate(net, valid_loader, loss, device=torch.device('cuda:0'))
-print(loss, acc)
+# train model
+train_model(net, train_loader, valid_loader, loss, num_epochs, optimizer, device=torch.device('cuda:0'))
+
+# load model
+#  net.load_state_dict(torch.load('30_classify_leaves/models/pre_res_model_0.85866.ckpt'))
+#  loss, acc = evaluate(net, valid_loader, loss, device=torch.device('cuda:0'))
+#  print(loss, acc)
 
